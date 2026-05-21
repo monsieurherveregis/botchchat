@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeurteLeChat MVP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a2e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 { font-size: 2rem; margin-bottom: 10px; color: #e94560; }
+    p { color: #aaa; margin-bottom: 40px; font-size: 1rem; }
+    #status {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      padding: 15px 30px;
+      background: #16213e;
+      border-radius: 10px;
+      min-width: 300px;
+      text-align: center;
+    }
+    button {
+      padding: 18px 50px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    #btnAppeler {
+      background: #e94560;
+      color: white;
+    }
+    #btnAppeler:hover { background: #c73652; transform: scale(1.05); }
+    #btnSuivant {
+      background: #0f3460;
+      color: white;
+      margin-top: 15px;
+      display: none;
+    }
+    #btnSuivant:hover { background: #1a5276; }
+    .boutons { display: flex; flex-direction: column; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>🐱 BeurteLeChat</h1>
+  <p>Parle à un inconnu. Anonymement.</p>
+  <div id="status">Prêt à appeler</div>
+  <div class="boutons">
+    <button id="btnAppeler" onclick="appeler()">📞 Appeler</button>
+    <button id="btnSuivant" onclick="suivant()">⏭ Suivant</button>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://ifpjrtyeokwkgcecvqrd.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmcGpydHllb2t3a2djZWN2cXJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDc2NjQsImV4cCI6MjA5NDg4MzY2NH0.t5S0Pz-_FFNRs-W_lwG5P479ZZ9-5QZXVTIFGOH_tE8';
+
+    function setStatus(msg) {
+      document.getElementById('status').innerText = msg;
+    }
+
+    async function appeler() {
+      setStatus('🔍 Recherche d\'un inconnu...');
+      document.getElementById('btnAppeler').style.display = 'none';
+      document.getElementById('btnSuivant').style.display = 'block';
+      // Logique matchmaking à connecter Jour 4
+    }
+
+    function suivant() {
+      setStatus('Prêt à appeler');
+      document.getElementById('btnAppeler').style.display = 'block';
+      document.getElementById('btnSuivant').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
